@@ -2,29 +2,29 @@ require_relative 'questions_db'
 
 class Question < QModel
 
-  def self.all
-    results = QDB.instance.execute('SELECT * FROM questions')
-    results.map{|result| Question.new(result)}
-  end
-
-  def self.create(options)
-    question = Question.new(options)
-    question.save
-    question
-  end
-
-  def self.find_by_id(id)
-    results = QDB.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        questions
-      WHERE
-        id = ?
-    SQL
-
-    results.map{|result| Question.new(result)}
-  end
+  # def self.all
+  #   results = QDB.instance.execute('SELECT * FROM questions')
+  #   results.map{|result| Question.new(result)}
+  # end
+  #
+  # def self.create(options)
+  #   question = Question.new(options)
+  #   question.save
+  #   question
+  # end
+  #
+  # def self.find_by_id(id)
+  #   results = QDB.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       questions
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   results.map{|result| Question.new(result)}
+  # end
 
   # def self.find_by_author_id(author_id)
   #   results = QDB.instance.execute(<<-SQL, author_id)

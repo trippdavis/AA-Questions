@@ -2,56 +2,56 @@ require_relative 'questions_db'
 
 class Reply < QModel
 
-  def self.all
-    results = QDB.instance.execute('SELECT * FROM replies')
-    results.map{|result| Reply.new(result)}
-  end
-
-  def self.create(options)
-    reply = Reply.new(options)
-    reply.save
-    reply
-  end
-
-
-  def self.find_by_id(id)
-    results = QDB.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        replies
-      WHERE
-        id = ?
-    SQL
-
-    results.map{|result| Reply.new(result)}
-  end
-
-  def self.find_by_user_id(user_id)
-    results = QDB.instance.execute(<<-SQL, user_id)
-      SELECT
-        *
-      FROM
-        replies
-      WHERE
-        user_id = ?
-    SQL
-
-    results.map{|result| Reply.new(result)}
-  end
-
-  def self.find_by_question_id(question_id)
-    results = QDB.instance.execute(<<-SQL, question_id)
-      SELECT
-        *
-      FROM
-        replies
-      WHERE
-        question_id = ?
-    SQL
-
-    results.map{|result| Reply.new(result)}
-  end
+  # def self.all
+  #   results = QDB.instance.execute('SELECT * FROM replies')
+  #   results.map{|result| Reply.new(result)}
+  # end
+  #
+  # def self.create(options)
+  #   reply = Reply.new(options)
+  #   reply.save
+  #   reply
+  # end
+  #
+  #
+  # def self.find_by_id(id)
+  #   results = QDB.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       replies
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   results.map{|result| Reply.new(result)}
+  # end
+  #
+  # def self.find_by_user_id(user_id)
+  #   results = QDB.instance.execute(<<-SQL, user_id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       replies
+  #     WHERE
+  #       user_id = ?
+  #   SQL
+  #
+  #   results.map{|result| Reply.new(result)}
+  # end
+  #
+  # def self.find_by_question_id(question_id)
+  #   results = QDB.instance.execute(<<-SQL, question_id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       replies
+  #     WHERE
+  #       question_id = ?
+  #   SQL
+  #
+  #   results.map{|result| Reply.new(result)}
+  # end
 
   # def save
   #   if @id

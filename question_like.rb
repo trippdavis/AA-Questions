@@ -2,29 +2,29 @@ require_relative 'questions_db'
 
 class QuestionLike < QModel
 
-  def self.all
-    results = QDB.instance.execute('SELECT * FROM question_likes')
-    results.map{|result| QuestionLike.new(result)}
-  end
-
-  def self.create(options)
-    like = QuestionLike.new(options)
-    like.save
-    like
-  end
-
-  def self.find_by_id(id)
-    results = QDB.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        question_likes
-      WHERE
-        id = ?
-    SQL
-
-    results.map{|result| QuestionLike.new(result)}
-  end
+  # def self.all
+  #   results = QDB.instance.execute('SELECT * FROM question_likes')
+  #   results.map{|result| QuestionLike.new(result)}
+  # end
+  #
+  # def self.create(options)
+  #   like = QuestionLike.new(options)
+  #   like.save
+  #   like
+  # end
+  #
+  # def self.find_by_id(id)
+  #   results = QDB.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       question_likes
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   results.map{|result| QuestionLike.new(result)}
+  # end
 
   def self.likers_for_question_id(question_id)
     results = QDB.instance.execute(<<-SQL, question_id)

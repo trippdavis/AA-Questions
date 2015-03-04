@@ -13,31 +13,31 @@ class User < QModel
     user
   end
 
-  def self.find_by_id(id)
-    results = QDB.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        users
-      WHERE
-        id = ?
-    SQL
-
-    results.map{|result| User.new(result)}
-  end
-
-  def self.find_by_name(fname, lname)
-    results = QDB.instance.execute(<<-SQL, fname, lname)
-      SELECT
-        *
-      FROM
-        users
-      WHERE
-        fname = ? AND lname = ?
-    SQL
-
-    results.map{|result| User.new(result)}
-  end
+  # def self.find_by_id(id)
+  #   results = QDB.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       users
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   results.map{|result| User.new(result)}
+  # end
+  #
+  # def self.find_by_name(fname, lname)
+  #   results = QDB.instance.execute(<<-SQL, fname, lname)
+  #     SELECT
+  #       *
+  #     FROM
+  #       users
+  #     WHERE
+  #       fname = ? AND lname = ?
+  #   SQL
+  #
+  #   results.map{|result| User.new(result)}
+  # end
 
   # def save
   #   if @id

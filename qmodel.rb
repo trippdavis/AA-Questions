@@ -1,6 +1,20 @@
 
 class QModel
 
+  #all
+  def self.all
+    class_name = QModel.decode_class_name(self.to_s)
+    results = QDB.instance.execute("SELECT * FROM #{class_name}")
+    results.map {|result| self.new(result)}
+  end
+
+  #create
+  def self.create(**options)
+    new_class = self.new(options)
+    new_class.save
+    new_class
+  end
+
   def initialize(options)
     options.keys.each do |key|
       self.instance_variable_set(('@' + key).to_sym, options[key])

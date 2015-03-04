@@ -26,29 +26,29 @@ end
 
 class QuestionFollow < QModel
 
-  def self.all
-    results = QDB.instance.execute('SELECT * FROM question_follows')
-    results.map{|result| QuestionFollow.new(result)}
-  end
-
-  def self.create(options)
-    follow = QuestionFollow.new(options)
-    follow.save
-    follow
-  end
-
-  def self.find_by_id(id)
-    results = QDB.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        question_follows
-      WHERE
-        id = ?
-    SQL
-
-    results.map{|result| QuestionFollow.new(result)}
-  end
+  # def self.all
+  #   results = QDB.instance.execute('SELECT * FROM question_follows')
+  #   results.map{|result| QuestionFollow.new(result)}
+  # end
+  #
+  # def self.create(options)
+  #   follow = QuestionFollow.new(options)
+  #   follow.save
+  #   follow
+  # end
+  #
+  # def self.find_by_id(id)
+  #   results = QDB.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       question_follows
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   results.map{|result| QuestionFollow.new(result)}
+  # end
 
   def self.followers_for_question_id(question_id)
     results = QDB.instance.execute(<<-SQL, question_id)
