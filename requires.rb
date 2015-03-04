@@ -1,0 +1,6 @@
+load 'user.rb'
+load 'question.rb'
+load 'reply.rb'
+load 'question_follow.rb'
+load 'question_like.rb'
+load 'qmodel.rb'
